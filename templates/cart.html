@@ -16,30 +16,34 @@
     <main class="app">
       <div class="cover-app">
         <section class="section-1">
-          <script>
-            var Total = 0;
-            for (var i = 0; i < localStorage.length; i++) {
-              Total += Number(
-                localStorage.getItem(localStorage.key(i)).substring(24, 27)
-              );
-              document.write(`
-          <div class="product-cover">
-            <div class="image-cover"><img src="/${localStorage
-              .getItem(localStorage.key(i))
-              .substring(0, 16)}" alt=""><span>10</span></div>
-            <div class="add-cover"><button type="button" id="abc1v"
-                onclick="document.getElementById('count').innerText++">+</button></div>
-            <div class="description-cover"><span>${localStorage
-              .getItem(localStorage.key(i))
-              .substring(17, 22)}</span><span>$${localStorage
-                .getItem(localStorage.key(i))
-                .substring(24, 27)}</span></div>
-            <div class="remove-cover"><button type="button" id="abc1v"
-                onclick="document.getElementById('count').innerText--">-</button>
+          {% for item in items %}
+          <form method="POST" action="">
+            {% csrf_token %}
+            <input
+              type="hidden"
+              name="product-id"
+              value="{{item.product.id}}"
+            />
+            <input type="hidden" name="href" value="cart" />
+            <div class="product-cover">
+              <div class="image-cover">
+                <img src="{{item.product.image.url}}" alt="" /><span
+                  >{{item.product_count}}</span
+                >
               </div>
-          </div>`);
-            }
-          </script>
+              <div class="add-cover">
+                <button name="type" value="add">+</button>
+              </div>
+              <div class="description-cover">
+                <span>{{item.product.name}}</span
+                ><span>{{item.product.price}} تومان </span>
+              </div>
+              <div class="remove-cover">
+                <button name="type" value="remove">-</button>
+              </div>
+            </div>
+          </form>
+          {% endfor %}
         </section>
         <section class="section-2">
           <div class="mim">
@@ -52,42 +56,22 @@
           <button class="line"></button>
           <div class="count">
             <h4>
-              count
-              <span id="count"
-                ><script>
-                  document.write(`${localStorage.length}`);
-                </script></span
-              >
+              تعداد کل
+              <span id="count">{{items|length}}</span>
             </h4>
             <h4>
-              total
-              <span id="total"
-                >$
-                <script>
-                  document.write(`${Total}`);
-                </script></span
-              >
+              قیمت کل:
+              <span id="total">{{price}} تومان</span>
             </h4>
           </div>
-          <form method="post">
-            <button class="btn" type="button" onclick="SubmitCartData()">
+          <form method="POST" action="/">
+            <input type="hidden" name="type" value="reset" />
+            <button class="btn" type="submit">
               <p>Buy</p>
             </button>
           </form>
         </section>
       </div>
     </main>
-    <script src="{% static 'js/product.js' %}"></script>
-    <script>
-      function SubmitCartData() {
-        if (localStorage.length > 0) {
-          localStorage.clear();
-          alert("محصول شما با موفقیت ثبت شد!");
-        } else {
-          alert("سبد خرید شما خالی است.");
-        }
-        document.location = "../";
-      }
-    </script>
   </body>
 </html>
