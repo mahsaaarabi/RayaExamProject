@@ -364,20 +364,20 @@
         "documentation": {}
     },
     {
+        "label": "Token",
+        "importPath": "rest_framework.authtoken.models",
+        "description": "rest_framework.authtoken.models",
+        "isExtraImport": true,
+        "detail": "rest_framework.authtoken.models",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "os",
         "description": "os",
         "detail": "os",
-        "documentation": {}
-    },
-    {
-        "label": "Token",
-        "importPath": "rest_framework.authtoken.models",
-        "description": "rest_framework.authtoken.models",
-        "isExtraImport": true,
-        "detail": "rest_framework.authtoken.models",
         "documentation": {}
     },
     {
