@@ -5,7 +5,6 @@ from accounts.models import Users
 from shoes.models import Order, Product, OrderItem
 from rest_framework.authtoken.models import Token
 
-
 class HomeView(View):
     def get(self, request):
         pro = Product.objects.all()
@@ -147,7 +146,7 @@ class CartView(View):
                     OrderItem.remove(my_order, id, 1)
                     basket = Order.get_basket(request.user)
                     order_items = basket.orderitem_set.all()
-                    if href == "main":
+                    if href == "cart":
                         return render(request, "index.html", {"products": Product.objects.all(), "count": len(basket.orderitem_set.all())})
                     else:
                         pr = 0

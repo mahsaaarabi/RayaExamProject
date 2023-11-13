@@ -1,4 +1,5 @@
 .app {
+  overflow-x: hidden;
   position: fixed;
   top: 0;
   left: 0;
@@ -185,6 +186,13 @@ form {
   font-family: "Comic Sans MS", sans-serif;
   animation: bounceIn 2s 1;
   -webkit-animation: bounceIn 2s 1;
+}
+#logo_top {
+  width: 70px;
+  z-index: 1;
+  position: absolute;
+  border-radius: 50px;
+  left: 80%;
 }
 .btn {
   font-family: "calibri", sans-serif;

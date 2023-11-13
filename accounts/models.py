@@ -8,5 +8,7 @@ class Users(AbstractUser):
     class Meta:
         verbose_name = "کاربر"
         verbose_name_plural = "کاربر ها"
-        
+
+
 # Create your models here.
+
