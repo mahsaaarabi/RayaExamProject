@@ -141,6 +141,7 @@
             </h4>
           </div>
           <form method="POST" action="/">
+            {% csrf_token %}
             <input type="hidden" name="type" value="reset" />
             <button class="btn" type="submit">
               <p>تسویه حساب</p>

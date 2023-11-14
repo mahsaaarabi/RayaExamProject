@@ -13,8 +13,7 @@ class HomeView(View):
             basket = Order.get_basket(request.user)
             if basket:
                 count = len(basket.orderitem_set.all())
-        response = render(request, "index.html", {
-                          "products": pro, "count": count})
+        response = render(request, "index.html", { "products": pro, "count": count})
         if request.user.is_authenticated and not request.COOKIES.get("token", None):
             token, _ = Token.objects.get_or_create(user=request.user)
             response.set_cookie(key="token", value=token)
