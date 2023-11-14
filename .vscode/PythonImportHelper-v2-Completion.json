@@ -543,7 +543,7 @@
         "kind": 6,
         "importPath": "shoes.views",
         "description": "shoes.views",
-        "peekOfCode": "class HomeView(View):\n    def get(self, request):\n        pro = Product.objects.all()\n        count = 0\n        if request.user.is_authenticated:\n            basket = Order.get_basket(request.user)\n            if basket:\n                count = len(basket.orderitem_set.all())\n        response = render(request, \"index.html\", { \"products\": pro, \"count\": count})\n        if request.user.is_authenticated and not request.COOKIES.get(\"token\", None):",
+        "peekOfCode": "class HomeView(View):\n    def get(self, request):\n        pro = Product.objects.all()\n        count = 0\n        if request.user.is_authenticated:\n            basket = Order.get_basket(request.user)\n            if basket:\n                count = len(basket.orderitem_set.all())\n        response = render(request, \"index.html\", {\n                          \"products\": pro, \"count\": count})",
         "detail": "shoes.views",
         "documentation": {}
     },
